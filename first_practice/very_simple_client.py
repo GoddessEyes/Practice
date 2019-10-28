@@ -6,7 +6,7 @@ from time import sleep
 
 def make_request():
     # Генерируем рандомные числа в list-compr. и посылаем их на сервер в цикле:
-    for number in [randint(1, 100) for i in range(5)]:
+    for number in [randint(1, 100) for i in tuple(range(0, 5))]:
         # Логгируем запрос:
         print(f'Будет отправлено число: {number}')
         # Запрос методом GET:
@@ -21,7 +21,7 @@ def make_request():
         # Печатаем поступивший ответ:
         print(f'Поступил ответ с числом: {response.json()["response"]}')
         # Просим программу заснуть на 3 секунды.
-        sleep(5)
+        sleep(2)
 
 
 if __name__ == '__main__':

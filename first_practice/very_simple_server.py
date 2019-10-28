@@ -1,5 +1,6 @@
 from sanic import Sanic
 from sanic.response import json
+
 app = Sanic()
 
 
@@ -8,13 +9,15 @@ def request_handler(request):
     # Парсим поступивший запрос и достаём информацию:
     parse_number = int(request.raw_args['number'])
 
-    # Логгироуем поступившее число в консоль:
+    # Логгируем поступившее число в консоль:
     print(f'Поступил запрос с числом: {parse_number}')
 
     # Умножаем число на 2, перед ответом:
     response = parse_number * 2
 
     # Возвращаем ответ:
+    print(f'Дан ответ {response}')
+
     return json({
         'response': response
     })

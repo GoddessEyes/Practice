@@ -4,16 +4,18 @@ from constants import WURL, KHABAROVSK_LAT, KHABAROVSK_LON, YANDEX_API_KEY
 
 def make_request():
     # Делаем request:
-    yandex_api_request = requests.get(
-        WURL,
+    yandex_api_response = requests.get(
+        url=WURL,
         params={
             'lon': KHABAROVSK_LON,
             'lat': KHABAROVSK_LAT,
         },
         # Передаём в заголовки API ключ от Яндекса:
-        headers={'X-Yandex-API-Key': YANDEX_API_KEY},
+        headers={
+            'X-Yandex-API-Key': YANDEX_API_KEY
+        },
     )
-    return yandex_api_request
+    return yandex_api_response
 
 
 def recursive_parsing(json_response, values_list, *args):
@@ -49,6 +51,7 @@ if __name__ == '__main__':
             'url',
             'name',
             'temp',
-            'season'
+            'season',
+
     ):
         print(item)
