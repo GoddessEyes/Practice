@@ -1,4 +1,3 @@
-from abc import ABC
 from time import sleep
 from random import randint
 from collections import defaultdict
@@ -38,7 +37,7 @@ class Cat(Animal):
 asuka_cat = Cat('Асочка')
 
 
-class Dog(Animal, ABC):
+class Dog(Animal):
     __refs__ = defaultdict(list)
 
     def __init__(self, name, step, burk, rawr):
@@ -83,6 +82,9 @@ class Dog(Animal, ABC):
         print(f'{self.name} устала')
         self.do_sleep()
 
+    def say_your_phrase(self):
+        print('Этот метод реализован у каждой собачки!')
+
     def do_sleep(self):
         sleep(self.sleep_time)
         self.sleep_time = 0
@@ -120,10 +122,8 @@ plushka = Dog(name='Плюшка', step=2, burk='Вуф вуф!!!', rawr='РРР
 
 try:
     DogsLife(Dog.get_instances(), 10).run_live()
+    print('Программа закончилась все собачки легли спать')
 except KeyboardInterrupt:
     [dog.do_sleep() for dog in Dog.get_instances()]
     print('ВЫ закончили программу! Все собачки легли спать')
     SystemExit()
-
-
-
