@@ -21,4 +21,4 @@ sanic==19.9.0
 ujson==1.35
 urllib3==1.25.6
 uvloop==0.13.0
-websockets==8.0.2
+websockets==9.1
